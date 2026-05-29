@@ -1,5 +1,5 @@
 {
-  "updated": "2026-05-29 14:40:00 UTC",
+  "updated": "2026-05-29 20:20:00 UTC",
   "milestones": [
     {"id": "repo_init", "status": "done", "ts": "2026-05-29 14:40:00 UTC"},
     {"id": "horizons_parser", "status": "done", "ts": "2026-05-29 14:40:00 UTC"},
@@ -7,8 +7,8 @@
     {"id": "dirbe_firas_utils", "status": "done", "ts": "2026-05-29 14:40:00 UTC"},
     {"id": "stac_provenance", "status": "done", "ts": "2026-05-29 14:40:00 UTC"},
     {"id": "per_volume_kits", "status": "done", "ts": "2026-05-29 14:40:00 UTC"},
-    {"id": "ci_actions", "status": "in_progress", "ts": "2026-05-29 14:40:00 UTC"},
-    {"id": "projection_layer", "status": "todo"},
+    {"id": "ci_actions", "status": "done", "ts": "2026-05-29 20:13:00 UTC"},
+    {"id": "projection_layer", "status": "in_review", "ts": "2026-05-29 20:20:00 UTC"},
     {"id": "three_mode_cli", "status": "todo"},
     {"id": "precession_galactic_ecliptic", "status": "todo"},
     {"id": "convergence_reports", "status": "todo"},
