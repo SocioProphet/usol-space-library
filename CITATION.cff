@@ -1,0 +1,8 @@
+cff-version: 1.2.0
+message: If you use this library, please cite it.
+title: USOL Sensor Suite Space Library
+authors:
+  - family-names: USOL
+    given-names: Collective
+date-released: 2025-08-29
+license: MIT
