@@ -1,0 +1,13 @@
+requests
+pandas
+numpy
+astropy
+healpy
+astroquery
+matplotlib
+pyyaml
+tqdm
+nbformat
+papermill
+pytest
+responses
