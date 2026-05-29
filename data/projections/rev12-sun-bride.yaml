@@ -1,0 +1,13 @@
+name: rev12-sun-bride
+tradition: Revelation 12
+archetype: The Sun and the Bride
+target_jpl_id: "10"
+tier: placement
+citation: "Revelation 12:1; interpretive overlay, not substrate evidence."
+commentary_md: |
+  Curated overlay for Book VIII. The substrate target is the Sun (`10`) and the overlay is explicitly interpretive.
+related:
+  - book-viii
+metadata:
+  book: VIII
+  mode: curated
