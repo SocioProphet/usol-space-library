@@ -1,0 +1,13 @@
+name: rev12-crown
+tradition: Revelation 12
+archetype: The Crown
+target_jpl_id: "301"
+tier: placement
+citation: "Revelation 12:1; interpretive overlay, not substrate evidence."
+commentary_md: |
+  Curated overlay for Book XI. The substrate target is the Moon (`301`) and the overlay is explicitly interpretive.
+related:
+  - book-xi
+metadata:
+  book: XI
+  mode: curated
