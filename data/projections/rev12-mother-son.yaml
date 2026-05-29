@@ -1,0 +1,13 @@
+name: rev12-mother-son
+tradition: Revelation 12
+archetype: The Mother and the Son
+target_jpl_id: "499"
+tier: placement
+citation: "Revelation 12:1-5; interpretive overlay, not substrate evidence."
+commentary_md: |
+  Curated overlay for Book VII. The substrate target is Mars (`499`) and the overlay is explicitly interpretive.
+related:
+  - book-vii
+metadata:
+  book: VII
+  mode: curated
