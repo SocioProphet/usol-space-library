@@ -6,12 +6,7 @@ Six tranches, each a single draft PR. Each tranche must merge before the next be
 
 Goal: lock the working v3+bugfix baseline and put it under CI.
 
-Files added or modified:
-- `.github/workflows/ci.yml`
-- `pyproject.toml`
-- `tests/test_smoke.py`
-- `STATUS.md`
-- executable v3 baseline package, scripts, and tests because the target GitHub repo was empty.
+Status: merged.
 
 Acceptance:
 - CI runs on push and pull request.
@@ -19,14 +14,30 @@ Acceptance:
 - `pytest -q` exits 0.
 - Smoke test imports every `usolspace` module and verifies `generate_volume_plate.py --help`.
 
-Out of scope:
-- Projection layer work.
-- New substrate modules.
-- New science claims.
-
 ## Tranche 2 — Projection Layer Foundation
 
-Introduce `CulturalProjection`, YAML projections, and curated Book lookup for VII/VIII/XI without breaking the v3 CLI.
+Goal: introduce `CulturalProjection`, YAML projections, and curated Book lookup for VII/VIII/XI without breaking the v3 CLI.
+
+Files added or modified:
+- `src/usolspace/projection.py`
+- `src/usolspace/books.py`
+- `data/projections/*.yaml`
+- `data/books/*.yaml`
+- projection/book/boundary tests
+- `STATUS.md`
+
+Acceptance:
+- Projection YAML loads into a typed `CulturalProjection` object.
+- Projection tiers are validated against `exact`, `placement`, `synthesis`, and `fails`.
+- Curated Books VII/VIII/XI resolve to curatable projection tiers only.
+- Book target and projection target must match.
+- Substrate modules do not import projection or book modules.
+- The existing v3 volume script remains untouched and backward-compatible.
+
+Out of scope:
+- Three-mode CLI.
+- New substrate astronomy modules.
+- Non-Rev12 projection registry.
 
 ## Tranche 3 — CLI Restructure
 
@@ -46,8 +57,9 @@ Add comparative plates, quantities table, fetch helpers, tutorial notebook 07, R
 
 ## Release acceptance checklist
 
-- [ ] Syntax bug fixed; existing Books VII/VIII/XI run.
-- [ ] Books are YAML-driven and backward-compatible.
+- [x] Syntax bug fixed; existing Books VII/VIII/XI run.
+- [x] Books have YAML registry foundation.
+- [ ] Books are routed through YAML in CLI.
 - [ ] Substrate-only Mode A exists.
 - [ ] Generic projection Mode B exists.
 - [ ] Precession and galactic-ecliptic modules exist with provenance.
