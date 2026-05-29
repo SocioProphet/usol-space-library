@@ -1,0 +1,10 @@
+code: BookVII
+title: Book VII — The Mother & the Son
+volume: VII
+target_jpl_id: "499"
+projection_path: data/projections/rev12-mother-son.yaml
+default_center: "500@399"
+default_start: "2025-09-01"
+default_stop: "2025-09-02"
+default_step: "1 d"
+default_quantities: "1,9,20"
