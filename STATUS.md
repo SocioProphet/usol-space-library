@@ -1,12 +1,12 @@
 # USOL Sensor Suite Space Library — STATUS
 
-**Updated:** 2026-05-29 14:40 UTC
+**Updated:** 2026-05-29 20:20 UTC
 
 ## Current migration state
 
-**v3+bugfix → v4 in progress (Tranche 1).**
+**v4 in progress (Tranche 2).**
 
-The repository is being bootstrapped from the v4 handoff package. Tranche 1 locks the v3 baseline under CI before projection-layer work begins.
+Tranche 1 merged the executable v3+bugfix baseline and CI. Tranche 2 introduces the projection-layer foundation while preserving substrate/projection separation.
 
 ## Completed (v3)
 - Repo scaffolding (MIT), docs for APIs & datasets.
@@ -26,8 +26,13 @@ The repository is being bootstrapped from the v4 handoff package. Tranche 1 lock
 - Added smoke tests for package importability and `generate_volume_plate.py --help`.
 - Preserved the v4 architecture handoff as follow-on implementation direction.
 
+## Added in Tranche 2
+- `CulturalProjection` dataclass and YAML projection loader.
+- Curated Book registry helpers for Books VII, VIII, and XI.
+- Initial YAML projections for Revelation 12 overlays.
+- Tests for projection loading, invalid tiers, duplicate registries, Book/projection target matching, and substrate/projection boundary enforcement.
+
 ## Next
-- Projection layer foundation: `CulturalProjection`, YAML registry, and curated Book lookup.
 - Three-mode CLI restructure: substrate-only, generic projection, curated book.
 - Precession and galactic-ecliptic substrate modules with provenance.
 - Cross-tradition convergence report and non-Rev12 projections.
