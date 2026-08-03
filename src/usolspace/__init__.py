@@ -10,4 +10,5 @@ __all__ = [
     "projection",
     "books",
     "sensor_mesh",
+    "nearby_stars",
 ]
