@@ -9,4 +9,5 @@ __all__ = [
     "provenance",
     "projection",
     "books",
+    "sensor_mesh",
 ]
