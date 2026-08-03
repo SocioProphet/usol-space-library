@@ -11,4 +11,5 @@ __all__ = [
     "books",
     "sensor_mesh",
     "nearby_stars",
+    "service",
 ]
