@@ -1,0 +1,28 @@
+# ArgoCD Application for the usol quadrant service (estate GitOps backbone).
+# Replace repoURL/targetRevision. No secret to manage — the service is stateless
+# and read-only (public astrometry).
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: usol-quadrant
+  namespace: argocd
+  finalizers:
+    - resources-finalizer.argocd.argoproj.io
+spec:
+  project: default
+  source:
+    repoURL: git@github.com:SocioProphet/usol-space-library.git
+    targetRevision: main
+    path: deploy/k8s
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: usol
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
+    syncOptions:
+      - CreateNamespace=true
+    retry:
+      limit: 3
+      backoff: { duration: 10s, factor: 2, maxDuration: 2m }

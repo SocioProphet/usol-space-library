@@ -1,0 +1,68 @@
+# usol quadrant service — GKE manifests (Namespace, Deployment, Service).
+# The LIVE side of the Space Twin's "live USOL + initial data load": serves
+# nearby_stars.quadrant_payload() at GET /space/quadrant so the client-vue cube
+# renders from live USOL instead of its shipped initial-load asset.
+#
+# Stateless + read-only (public factual astrometry, no secrets, no writes) → no
+# PVC, no Secret, safe to scale horizontally and roll. Apply via kustomize/kubectl
+# or the ArgoCD Application (deploy/argocd-application.yaml). Replace REGISTRY/TAG.
+---
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: usol
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: usol-quadrant
+  namespace: usol
+  labels: { app: usol-quadrant }
+spec:
+  replicas: 2 # stateless read-only service — safe to scale; RollingUpdate for zero-downtime
+  strategy:
+    type: RollingUpdate
+    rollingUpdate: { maxUnavailable: 0, maxSurge: 1 }
+  selector:
+    matchLabels: { app: usol-quadrant }
+  template:
+    metadata:
+      labels: { app: usol-quadrant }
+    spec:
+      securityContext:
+        runAsNonRoot: true
+        runAsUser: 10001
+        fsGroup: 10001
+      containers:
+        - name: quadrant
+          image: REGISTRY/usol-quadrant:TAG # built from deploy/Dockerfile
+          ports:
+            - { name: http, containerPort: 8087 }
+          env:
+            - { name: PORT, value: "8087" }
+          livenessProbe:
+            httpGet: { path: /healthz, port: http } # public, unauthenticated
+            initialDelaySeconds: 5
+            periodSeconds: 15
+          readinessProbe:
+            httpGet: { path: /healthz, port: http }
+            initialDelaySeconds: 3
+            periodSeconds: 10
+          resources:
+            requests: { cpu: "50m", memory: "64Mi" }
+            limits: { cpu: "250m", memory: "128Mi" }
+          securityContext:
+            allowPrivilegeEscalation: false
+            readOnlyRootFilesystem: true
+            capabilities: { drop: ["ALL"] }
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: usol-quadrant
+  namespace: usol
+  labels: { app: usol-quadrant }
+spec:
+  selector: { app: usol-quadrant }
+  ports:
+    - { name: http, port: 8087, targetPort: http }
